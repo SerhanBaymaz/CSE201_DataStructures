@@ -1,5 +1,8 @@
 import java.util.Scanner;
+/*
+        Ibrahim BAYMAZ - 20200808006
 
+ */
 public class TicTacToeLab1_20200808006 {
     public static final int X = 1, O = -1, EMPTY = 0;
     private int[][] board = new int[3][3];
@@ -83,7 +86,6 @@ public class TicTacToeLab1_20200808006 {
         }
         return false;
     }
-
 
     public static void main(String[] args) {
         System.out.println("Welcome to Tic Tac Toe");
