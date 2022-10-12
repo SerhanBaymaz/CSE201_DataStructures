@@ -9,6 +9,10 @@ public class Week4_LinkedList {
         myList.addLast(91);
         myList.print();
 
+        System.out.println("***********");
+        myList.printReverse();
+
+
     }
 }
 
@@ -50,7 +54,23 @@ class LinkedList<E>{
             return;
 
         System.out.println(node.getValue());
-        print(node.getPrevious());
+        printReverse(node.getPrevious());
+    }
+
+    public void printReverse(){
+        this.printReverse(tail);
+    }
+
+    public void addFirst(E value){
+        Node<E> newNode = new Node<E>(value);
+        if(isEmpty()){
+            tail = newNode;
+        }
+        else{
+            head.setPrevious(newNode);
+            newNode.setNext(head);
+        }
+        head = newNode;
     }
 
 }
