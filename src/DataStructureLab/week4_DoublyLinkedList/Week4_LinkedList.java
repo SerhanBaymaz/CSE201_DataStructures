@@ -10,7 +10,16 @@ public class Week4_LinkedList {
         myList.print();
 
         System.out.println("***********");
-        myList.printReverse();
+        myList.addFirst(2);
+        myList.print();
+
+        System.out.println("***********");
+        System.out.println("my value is : "+myList.getNode(0).getValue());
+
+        System.out.println("***********");
+        myList.insertAfter(1,10000);
+        myList.print();
+        System.out.println("***********");
 
 
     }
@@ -73,6 +82,49 @@ class LinkedList<E>{
         head = newNode;
     }
 
+    public Node<E> getNode(int index) {
+        if (index < 0 || isEmpty()) {
+            throw new IndexOutOfBoundsException();
+        }
+        int counter = 0;
+        Node<E> temp = head;
+        for (int i = 0; i < index+1; i++) {
+            if (counter == index) {
+                return temp;
+            }
+
+            temp = temp.getNext();
+            counter++;
+
+            if (temp == null) {
+                throw new IndexOutOfBoundsException();
+            }
+        }
+        return null;
+
+    }
+
+    public void insertAfter(int index, E value){
+        Node<E> prevNode = getNode(index);
+        Node<E> nextNode = prevNode.getNext();
+        Node<E> newNode = new Node<E>(value);
+
+
+        if (prevNode==null){
+            throw new IndexOutOfBoundsException();
+        }
+        else if (nextNode==null){
+            addLast(value);
+        }
+        else{
+            prevNode.setNext(newNode);
+            newNode.setPrevious(prevNode);
+            newNode.setNext(nextNode);
+            nextNode.setPrevious(newNode);
+        }
+
+
+    }
 }
 
 class Node<E>{
