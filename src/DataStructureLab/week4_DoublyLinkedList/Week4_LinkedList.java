@@ -27,6 +27,8 @@ class LinkedList<E>{
         }
         else{
             tail.setNext(newNode);
+            newNode.setPrevious(tail);
+
         }
         tail = newNode;
     }
@@ -41,6 +43,14 @@ class LinkedList<E>{
 
         System.out.println(node.getValue());
         print(node.getNext());
+    }
+
+    public void printReverse(Node<E> node){
+        if(node == null)
+            return;
+
+        System.out.println(node.getValue());
+        print(node.getPrevious());
     }
 
 }
