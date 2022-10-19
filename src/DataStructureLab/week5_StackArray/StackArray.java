@@ -46,7 +46,10 @@ public class StackArray<E> implements IStack<E> {
 
     @Override
     public E pop() {
-        return data[--size];
+        E temp = data[size - 1];
+        data[size - 1] = null;
+        size--;
+        return temp;
     }
 
     @Override
@@ -68,7 +71,7 @@ public class StackArray<E> implements IStack<E> {
     @Override
     public String toString() {
         String s = "";
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < 10; i++) {
             s += data[i] + ", ";
         }
         return "[" + s + "]";
