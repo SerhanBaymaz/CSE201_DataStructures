@@ -89,6 +89,24 @@ public class RecursionTest {
 
     }
 
+    public static int computePower(int base,int power) {
+    /*
+        *                       3^5 x 3
+        *                       3^4 x 3
+        *                       3^3 x 3
+        *                       3^2 x 3
+        *                       3^1 x 3
+        *                       3^0 x 3  // BaseCase (if power ==0){return 1}
+                    f(base,power-1) x base
+ */
+
+        if(power==0){
+            return 1;
+        }
+
+        return base*computePower(base, power-1);
+    }
+
 
 
 
@@ -166,6 +184,7 @@ public class RecursionTest {
 
 
 
+        System.out.println("The power is : "+computePower(5, 3));
 
 
 
