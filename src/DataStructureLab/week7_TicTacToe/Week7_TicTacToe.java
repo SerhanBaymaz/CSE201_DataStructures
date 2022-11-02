@@ -89,6 +89,42 @@ class Board {
         clone.player = player;
         return clone;
     }
+
+    public void calculateComputerMove(){
+        for (int i = 0; i < boardArray.length; i++) {
+            for (int j = 0; j < boardArray[0].length; j++) {
+
+                if (boardArray[i][j]==EMPTY){
+                    Board ajanSmith = cloneBoard();
+                    ajanSmith.parent = this;
+
+                    try {
+                        ajanSmith.putMark(i, j);
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
+
+                    this.children.add(ajanSmith);
+                }
+
+
+            }
+        }
+    }
+
+    public void printChildren(){
+        for (Board child: children) {
+            child.printBoard();
+        }
+        /*
+        //print children without for-each loop
+        for (int i = 0; i < children.size(); i++) {
+            children.get(i).printBoard();
+        }
+
+         */
+    }
+
 }
 
 public class Week7_TicTacToe {
@@ -99,6 +135,8 @@ public class Week7_TicTacToe {
         game1.printBoard();
         game1.putMark(1, 2);
         game1.printBoard();
+        game1.calculateComputerMove();
+        game1.printChildren();
     }
 }
 
