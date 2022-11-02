@@ -1,11 +1,18 @@
 package DataStructureLab.week7_TicTacToe;
+
+import java.util.LinkedList;
+
 class Board {
     public static final int X = 1, O = -1, EMPTY = 0;
     private int[][] boardArray = new int[3][3];
     private int player;
+    private Board parent;
+    private LinkedList<Board> children;
+
 
     Board() {
         clearBoard();
+        this.children = new LinkedList<Board>();
     }
 
     public void clearBoard() {
@@ -70,6 +77,17 @@ class Board {
             return (O);
         else
             return (0);
+    }
+
+    public Board cloneBoard() {
+        Board clone = new Board();
+        for (int i = 0; i < boardArray.length; i++) {
+            for (int j = 0; j < boardArray[0].length; j++) {
+                clone.boardArray[i][j] = boardArray[i][j];
+            }
+        }
+        clone.player = player;
+        return clone;
     }
 }
 
