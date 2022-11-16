@@ -104,11 +104,16 @@ class Board {
                     if (winner == EMPTY) {
                         tic.calculateComputerMove();
                     } else {
-                        if (winner == X) {
-                            this.countX++;
-                        } else if (winner == O) {
-                            this.countO++;
-                        }
+                       Board temp = tic;
+                          while (temp.parent != null) {
+                              temp = temp.parent;
+                              if (winner == X) {
+                                  temp.countX++;
+                            } else if (winner == O) {
+                                  temp.countO++;
+                            }
+
+                          }
                     }
                 }
             }
