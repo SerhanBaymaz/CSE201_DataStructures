@@ -1,13 +1,52 @@
 package DataStructureLab.week8_TicTacToeContinue;
 import java.util.LinkedList;
+import java.util.Scanner;
 
 public class Week8_TicTacToeContinue {
 
     public static void main(String[] Args) throws IllegalAccessException {
         Board game = new Board();
-        game.calculateComputerMove();
-        game.printTree();
+        Scanner scanner = new Scanner(System.in);
+        do {
+            System.out.print("Enter a row for X: ");
+            int row = scanner.nextInt();
+            System.out.print("Enter a column for X: ");
+            int column = scanner.nextInt();
+            game.putMark(row, column);
+            System.out.println("Users move:");
+            game.printBoard();
 
+            game.calculateComputerMove();
+
+            double bestScore = Double.NEGATIVE_INFINITY;
+            Board bestMove = null;
+            for (Board child : game.children) {
+                Double currentScore = Board.fitness(child);
+                if(child.winner() == Board.O){
+                    bestMove = child;
+                    break;
+                }
+
+
+
+                if (child.countO > bestScore){
+                    bestScore = child.countO;
+                    bestMove = child;
+                }
+
+                if (currentScore>bestScore){
+                    bestScore=currentScore;
+                    bestMove=child;
+                }
+            }
+
+            if (bestMove !=null){
+                game=bestMove;
+                System.out.println("Computer's move :");
+                game.printBoard();
+            }
+
+        }while (game.winner()==0 && game.children.size()>0);
     }
 }
 
@@ -92,6 +131,7 @@ class Board {
     }
 
     public void calculateComputerMove() throws IllegalArgumentException {
+        this.children.clear();
         for (int i = 0; i < boardArray.length; i++) {
             for (int j = 0; j < boardArray[0].length; j++) {
                 if (boardArray[i][j] == EMPTY) {
@@ -138,6 +178,14 @@ class Board {
         }
         newBoard.player = this.player;
         return newBoard;
+    }
+
+    public static double fitness(Board board) {
+        if(board.countO==0 && board.countX==0){
+            return 0;
+        }else{
+            return (double) board.countO / (board.countX + board.countO) ;
+        }
     }
 
 
