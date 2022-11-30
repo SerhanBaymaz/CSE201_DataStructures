@@ -47,5 +47,23 @@ public class BinarySearchTree {
 
 
 
+    public void insert(int data){
+        root = insert(root, data);
+    }
+    private Node insert(Node currNode, int data){
+        if(currNode == null){
+            currNode = new Node(data);
+            return currNode;
+        }else{
+            if(data < currNode.getData()){
+                currNode.setLeft(insert(currNode.getLeft(), data));
+            }else{
+                currNode.setRight(insert(currNode.getRight(), data));
+            }
+        }
+        return currNode;
+    }
+
+
 
 }
