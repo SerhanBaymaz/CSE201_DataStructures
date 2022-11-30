@@ -83,6 +83,32 @@ public class BinarySearchTree {
 
 
 
-
+    public void delete(int data){
+        root = delete(root, data);
+    }
+    private Node delete(Node currNode, int data){
+        if(currNode == null){
+            return null;
+        }else{
+            if(data < currNode.getData()){
+                currNode.setLeft(delete(currNode.getLeft(), data));
+            }else if(data > currNode.getData()){
+                currNode.setRight(delete(currNode.getRight(), data));
+            }else{
+                if(currNode.getLeft() == null && currNode.getRight() == null){
+                    return null;
+                }else if(currNode.getLeft() == null){
+                    return currNode.getRight();
+                }else if(currNode.getRight() == null){
+                    return currNode.getLeft();
+                }else{
+                    Node temp = findMin(currNode.getRight());
+                    currNode.setData(temp.getData());
+                    currNode.setRight(delete(currNode.getRight(), temp.getData()));
+                }
+            }
+        }
+        return currNode;
+    }
 
 }
