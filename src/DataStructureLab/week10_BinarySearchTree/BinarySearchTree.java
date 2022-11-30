@@ -66,4 +66,23 @@ public class BinarySearchTree {
 
 
 
+    public Node findMax(Node currNode){
+        if(currNode.getRight() == null){
+            return currNode;
+        }else{
+            return findMax(currNode.getRight());
+        }
+    }
+    public Node findMin(Node currNode){
+        if(currNode.getLeft() == null){
+            return currNode;
+        }else{
+            return findMin(currNode.getLeft());
+        }
+    }
+
+
+
+
+
 }
