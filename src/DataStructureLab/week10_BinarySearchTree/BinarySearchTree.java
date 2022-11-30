@@ -22,6 +22,30 @@ public class BinarySearchTree {
     }
 
 
+    public void inorder(){
+        inorder(root);
+    }
+    private void inorder(Node currNode){
+        if(currNode != null){
+            inorder(currNode.getLeft());
+            System.out.print(currNode.getData() + " ");
+            inorder(currNode.getRight());
+        }
+    }
+
+
+    public void postorder(){
+        postorder(root);
+    }
+    private void postorder(Node currNode){
+        if(currNode != null){
+            postorder(currNode.getLeft());
+            postorder(currNode.getRight());
+            System.out.print(currNode.getData() + " ");
+        }
+    }
+
+
 
 
 }
