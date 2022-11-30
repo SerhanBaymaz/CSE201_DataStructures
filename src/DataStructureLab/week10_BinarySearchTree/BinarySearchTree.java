@@ -9,7 +9,17 @@ public class BinarySearchTree {
         this.root = null;
     }
 
-
+    //Methods
+    public void preorder(){
+        preorder(root);
+    }
+    private void preorder(Node currNode){
+        if(currNode != null){
+            System.out.print(currNode.getData() + " ");
+            preorder(currNode.getLeft());
+            preorder(currNode.getRight());
+        }
+    }
 
 
 
