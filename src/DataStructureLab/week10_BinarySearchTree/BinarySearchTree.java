@@ -159,4 +159,29 @@ public class BinarySearchTree {
         System.out.println("Count Nodes: " + countNodes(root));
     }
 
+    public int countLeaves(Node currNode){
+        if(currNode == null){
+            return 0;
+        }else if(currNode.getLeft() == null && currNode.getRight() == null){
+            return 1;
+        }else{
+            return countLeaves(currNode.getLeft()) + countLeaves(currNode.getRight());
+        }
+    }
+    public void printCountLeaves(){
+        System.out.println("Count Leaves: " + countLeaves(root));
+    }
+
+    public int countInternalNodes(Node currNode){
+        if(currNode == null){
+            return 0;
+        }else if(currNode.getLeft() == null && currNode.getRight() == null){
+            return 0;
+        }else{
+            return 1 + countInternalNodes(currNode.getLeft()) + countInternalNodes(currNode.getRight());
+        }
+    }
+    public void printCountInternalNodes(){
+        System.out.println("Count Internal Nodes: " + countInternalNodes(root));
+    }
 }

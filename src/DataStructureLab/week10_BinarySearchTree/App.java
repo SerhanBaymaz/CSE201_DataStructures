@@ -54,6 +54,8 @@ public class App {
         bst2.printHeight();
         bst2.printCountNodes();
 
+        bst2.printCountLeaves();
+        bst2.printCountInternalNodes();
 
     }
 }
