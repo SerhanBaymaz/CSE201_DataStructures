@@ -40,7 +40,6 @@ public class App {
         bst2.insert(3);
         bst2.insert(20);
         bst2.insert(18);
-        bst2.insert(19);
         bst2.insert(16);
         bst2.insert(14);
         bst2.insert(13);
@@ -51,7 +50,9 @@ public class App {
         bst2.preorder();
         System.out.println();
 
-        System.out.println("Depth of the tree is :" + bst2.depth(bst2.root));
+        bst2.printDepth();
+        bst2.printHeight();
+        bst2.printCountNodes();
 
 
     }
