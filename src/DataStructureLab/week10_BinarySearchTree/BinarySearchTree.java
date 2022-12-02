@@ -3,6 +3,7 @@ package DataStructureLab.week10_BinarySearchTree;
 public class BinarySearchTree {
     //Attributes
     public Node root;
+    public int depth;
 
     //Constructor
     public BinarySearchTree() {
@@ -111,4 +112,18 @@ public class BinarySearchTree {
         return currNode;
     }
 
+    public int depth (Node currNode){
+        if(currNode == null){
+            return 0;
+        }else{
+            int leftDepth = depth(currNode.getLeft());
+            int rightDepth = depth(currNode.getRight());
+
+            if(leftDepth > rightDepth){
+                return leftDepth + 1;
+            }else{
+                return rightDepth + 1;
+            }
+        }
+    }
 }

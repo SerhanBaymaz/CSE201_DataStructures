@@ -1,14 +1,14 @@
 package DataStructureLab.week10_BinarySearchTree;
 
-public class Node<E> {
+public class Node {
     //Attributes
-    private E data;
-    private Node<E> left;
-    private Node<E> right;
+    private int data;
+    private Node left;
+    private Node right;
 
 
     //Constructor
-    public Node(E data) {
+    public Node(int data) {
         this.data = data;
         this.left = null;
         this.right = null;
@@ -16,24 +16,24 @@ public class Node<E> {
 
 
     //Getters and Setters
-    public E getData() {
+    public int getData() {
         return data;
     }
-    public void setData(E data) {
+    public void setData(int data) {
         this.data = data;
     }
 
-    public Node<E> getLeft() {
+    public Node getLeft() {
         return left;
     }
-    public void setLeft(Node<E> left) {
+    public void setLeft(Node left) {
         this.left = left;
     }
 
-    public Node<E> getRight() {
+    public Node getRight() {
         return right;
     }
-    public void setRight(Node<E> right) {
+    public void setRight(Node right) {
         this.right = right;
     }
 
