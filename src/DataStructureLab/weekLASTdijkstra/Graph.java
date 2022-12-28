@@ -1,13 +1,13 @@
 package DataStructureLab.weekLASTdijkstra;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Graph {
-    Set<Node> nodes;
+    private Set<Node> nodes;
 
-    public Graph() {}
-    public Graph(Set<Node> nodes) {
-        this.nodes = nodes;
+    public Graph() {
+        this.nodes = new HashSet<>();
     }
 
     public void addNode(Node nodeA) {
@@ -15,5 +15,11 @@ public class Graph {
     }
 
 
+    public Set<Node> getNodes() {
+        return nodes;
+    }
+    public void setNodes(Set<Node> nodes) {
+        this.nodes = nodes;
+    }
 
 }
